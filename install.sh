@@ -2,6 +2,7 @@
 
 # refer  spf13-vim bootstrap.sh`
 LVIM_DIR=$HOME/l-vim
+cd $LVIM_DIR
 
 lnif() {
     if [ -e "$1" ]; then

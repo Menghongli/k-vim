@@ -1,9 +1,7 @@
 #!/bin/bash
 
 # refer  spf13-vim bootstrap.sh`
-BASEDIR=$(dirname $0)
-cd $BASEDIR
-CURRENT_DIR=`pwd`
+LVIM_DIR=$HOME/l-vim
 
 lnif() {
     if [ -e "$1" ]; then
@@ -18,14 +16,14 @@ for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc $HOME/.vimrc.bundles; do [ -L $i 
 
 
 echo "Step2: setting up symlinks"
-lnif $CURRENT_DIR/vimrc $HOME/.vimrc
-lnif $CURRENT_DIR/vimrc.bundles $HOME/.vimrc.bundles
-lnif "$CURRENT_DIR/" "$HOME/.vim"
+lnif $LVIM_DIR/vimrc $HOME/.vimrc
+lnif $LVIM_DIR/vimrc.bundles $HOME/.vimrc.bundles
+lnif "$LVIM_DIR/" "$HOME/.vim"
 
 echo "Step3: install vundle"
-if [ ! -e $CURRENT_DIR/bundle/vundle ]; then
+if [ ! -e $LVIM_DIR/bundle/vundle ]; then
     echo "Installing Vundle"
-    git clone https://github.com/gmarik/vundle.git $CURRENT_DIR/bundle/vundle
+    git clone https://github.com/gmarik/vundle.git $LVIM_DIR/bundle/vundle
 else
     echo "Upgrade Vundle"
     cd "$HOME/.vim/bundle/vundle" && git pull origin master
@@ -41,8 +39,8 @@ export SHELL=$system_shell
 echo "Step5: compile YouCompleteMe"
 echo "It will take a long time, just be patient!"
 echo "If error,you need to compile it yourself"
-echo "cd $CURRENT_DIR/bundle/YouCompleteMe/ && bash -x install.sh --clang-completer"
-cd $CURRENT_DIR/bundle/YouCompleteMe/
+echo "cd $LVIM_DIR/bundle/YouCompleteMe/ && bash -x install.sh --clang-completer"
+cd $LVIM_DIR/bundle/YouCompleteMe/
 
 if [ `which clang` ]   # check system clang
 then

@@ -21,6 +21,15 @@ lnif $LVIM_DIR/vimrc $HOME/.vimrc
 lnif $LVIM_DIR/vimrc.bundles $HOME/.vimrc.bundles
 lnif "$LVIM_DIR/" "$HOME/.vim"
 
+echo "Step3: install vundle"
+if [ ! -e $LVIM_DIR/bundle/vundle ]; then
+  echo "Installing Vundle"
+  git clone https://github.com/gmarik/vundle.git $LVIM_DIR/bundle/vundle
+else
+  echo "Upgrade Vundle"
+  cd "$HOME/.vim/bundle/vundle" && git pull origin master
+fi
+
 echo "Step4: compile YouCompleteMe"
 echo "It will take a long time, just be patient!"
 echo "If error,you need to compile it yourself"

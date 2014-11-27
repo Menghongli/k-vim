@@ -7,13 +7,11 @@
 "################### dependencies #####################
 "package dependence:  ctags
 
-set nocompatible
 " configure Vundle
 filetype off " required! turn off
-set rtp+=~/.vim/bundle/Vundle.vim/
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/Vundle.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'majutsushi/tagbar'

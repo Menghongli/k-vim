@@ -64,6 +64,8 @@ set wildignore=*.o,*~,*.pyc
 
 "Always show current position
 set ruler
+set cursorcolumn
+set cursorline
 
 " Height of the command bar
 set cmdheight=2
@@ -107,7 +109,7 @@ set novisualbell
 set t_vb=
 set tm=500
 
-set fu
+" set fu
 
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
@@ -115,26 +117,10 @@ set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
+" => Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-  set guioptions-=T
-  set guioptions-=m
-  set guioptions+=e
-  set guitablabel=%M\ %t
-else
-  let g:gruvbox_italic=0
-endif
-
-colorscheme gruvbox
-set t_Co=256
-set background=dark
-" let g:molokai_original = 1
-" let g:rehash256 = 1
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -189,7 +175,7 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indent
-set wrap "Wrap lines
+set nowrap "Wrap lines
 
 "Show line numbers
 set relativenumber number
@@ -248,7 +234,7 @@ else
   noremap l <C-w>>
 endif
 
-map <A-a> ggVG
+map <leader>sa ggVG
 
 
 " Opens a new tab with the current buffer's path
@@ -275,28 +261,6 @@ autocmd BufReadPost *
      \ endif
 " Remember info about open buffers on close
 set viminfo^=%
-
-"""""""""""""""""""""""""""""
-" => Ctrl P
-"""""""""""""""""""""""""""""
-let g:ctrlp_map = '<leader>p'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|tmp'
-
-""""""""""""""""""""""""""""""
-" => Air line
-""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
-
-"vim-airline
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-let g:airline_powerline_fonts=1
-let g:airline_enable_branch=1
-let g:airline_enable_syntastic=1
-let g:airline_detect_paste=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
@@ -362,32 +326,6 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Tagbar
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("mac") || has("macunix")
-  let g:tagbar_ctags_bin = '/opt/boxen/homebrew/bin/ctags'
-else
-  let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
-endif
-
-nmap <F9> :TagbarToggle<cr>
-
-let g:tagbar_left = 1
-let g:tagbar_autofocus = 1
-
-" for ruby
-let g:tagbar_type_ruby = {
-    \ 'kinds' : [
-        \ 'm:modules',
-        \ 'c:classes',
-        \ 'd:describes',
-        \ 'C:contexts',
-        \ 'f:methods',
-        \ 'F:singleton methods'
-    \ ]
-\ }
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Folding
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -403,7 +341,6 @@ map <leader>ss :setlocal spell!<cr>
 " Shortcuts using <leader>
 map <leader>sn ]s
 map <leader>sp [s
-map <leader>sa zg
 map <leader>s? z=
 
 
@@ -419,79 +356,6 @@ map <leader>q <C-w><C-v><C-l>:e ~/buffer<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Syntastic
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:syntastic_auto_jump=1
-let g:syntastic_error_symbol='>>'
-let g:syntastic_warning_symbol='>'
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_highlighting = 0
-let g:syntastic_javascript_checkers = ['jsl', 'jshint']
-let g:syntastic_html_checkers=[]
-let g:syntastic_always_populate_loc_list = 1
-highlight SyntasticErrorSign guifg=white guibg=black
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => YCM
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"youcompleteme  默认tab  s-tab 和自动补全冲突
-"let g:ycm_key_list_select_completion=['<c-n>']
-let g:ycm_key_list_select_completion = ['<Down>']
-"let g:ycm_key_list_previous_completion=['<c-p>']
-let g:ycm_key_list_previous_completion = ['<Up>']
-let g:ycm_complete_in_comments = 1  "在注释输入中也能补全
-let g:ycm_complete_in_strings = 1   "在字符串输入中也能补全
-let g:ycm_use_ultisnips_completer = 1 "提示UltiSnips
-let g:ycm_collect_identifiers_from_comments_and_strings = 1   "注释和字符串中的文字也会被收入补全
-let g:ycm_collect_identifiers_from_tags_files = 1
-
-" 直接触发自动补全 insert模式下
-" let g:ycm_key_invoke_completion = '<C-Space>'
-" 黑名单,不启用
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'gitcommit' : 1,
-      \}
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => utilsnips + snippets
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger       = "<tab>"
-let g:UltiSnipsJumpForwardTrigger  = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsSnippetDirectories  = ['UltiSnips']
-let g:UltiSnipsSnippetsDir = '~/.vim/UltiSnips'
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => delimiMate + closetag
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:closetag_html_style=1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Expand region
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map + <Plug>(expand_region_expand)
-map _ <Plug>(expand_region_shrink)
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Multiple-cursors
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:multi_cursor_use_default_mapping=0
-" Default mapping
-let g:multi_cursor_next_key='<C-m>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => RainBow Parenthesses
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions

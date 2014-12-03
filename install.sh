@@ -30,7 +30,13 @@ else
   cd "$HOME/.vim/bundle/vundle" && git pull origin master
 fi
 
-echo "Step4: compile YouCompleteMe"
+echo "Step4: update/install plugins using Vundle"
+system_shell=$SHELL
+export SHELL="/bin/sh"
+vim -u $HOME/.vimrc.bundles +BundleInstall! +BundleClean +qall
+export SHELL=$system_shell
+
+echo "Step5: compile YouCompleteMe"
 echo "It will take a long time, just be patient!"
 echo "If error,you need to compile it yourself"
 echo "cd $LVIM_DIR/bundle/YouCompleteMe/ && bash -x install.sh --clang-completer"

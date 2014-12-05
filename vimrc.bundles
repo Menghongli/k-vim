@@ -13,6 +13,8 @@ filetype off " required! turn off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+Bundle 'gmarik/vundle'
+
 """""""""""""""""""""""""""""
 " => Ctrl P
 """""""""""""""""""""""""""""
@@ -153,9 +155,6 @@ else
   let g:gruvbox_italic=0
 endif
 
-colorscheme gruvbox
-set t_Co=256
-set background=dark
 " let g:molokai_original = 1
 " let g:rehash256 = 1
 " 

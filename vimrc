@@ -241,16 +241,10 @@ map <leader>sa ggVG
 " Super useful when editing files in the same directory
 " map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 map <leader>vs :vs <c-r>=expand("%:p:h")<cr>/
+map <leader>s :split <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-" Specify the behavior when switching between buffers
-try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
-catch
-endtry
 
 map <leader>sw :w !sudo tee %>/dev/null<cr>
 

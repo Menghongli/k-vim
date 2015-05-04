@@ -63,8 +63,8 @@ set wildignore=*.o,*~,*.pyc
 
 "Always show current position
 set ruler
-set cursorcolumn
-set cursorline
+" set cursorcolumn
+" set cursorline
 
 " Height of the command bar
 set cmdheight=2
@@ -211,6 +211,9 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" More natural split opening
+set splitbelow
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>

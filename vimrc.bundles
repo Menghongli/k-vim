@@ -176,7 +176,6 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-Bundle 'rking/ag.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'rizzatti/dash.vim'
 Bundle 'vim-scripts/matchit.zip'
@@ -187,3 +186,6 @@ Bundle 'hail2u/vim-css3-syntax'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
+Bundle 'dyng/ctrlsf.vim'
+
+nmap \ <Plug>CtrlSFCwordPath<CR>

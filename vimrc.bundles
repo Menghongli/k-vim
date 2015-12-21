@@ -189,3 +189,9 @@ Bundle 'tpope/vim-repeat'
 Bundle 'dyng/ctrlsf.vim'
 
 nmap \ <Plug>CtrlSFCwordPath<CR>
+
+
+
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'tmux-plugins/vim-tmux'
+Bundle 'slim-template/vim-slim.git'

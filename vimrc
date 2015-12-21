@@ -47,6 +47,15 @@ inoremap jj <ESC>
 
 nnoremap <leader>v V`]
 
+if has('unnamedplus')
+  set clipboard=unnamedplus  " Share X windows clipboard.
+else
+  set clipboard=unnamed  " Share system clipboard.
+endif
+
+" add jbuilder syntax highlighting
+au BufNewFile,BufRead *.json.jbuilder set ft=ruby
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -115,8 +124,8 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 
-colorscheme gruvbox
-set t_Co=256
+colorscheme Tomorrow-Night
+" set t_Co=256
 set background=dark
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -226,10 +235,6 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
-
-"Switch between windows
-nmap <S-h> <C-h>
-nmap <S-l> <C-l>
 
 "Resize windows
 if has("mac") || has("macunix")

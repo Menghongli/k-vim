@@ -8,15 +8,13 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
-" ensure ftdetect et al work by including this after the Vundle stuff
-filetype plugin indent on
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=10000
 
+silent! py3 pass
 " Enable filetype plugins
 filetype on
 filetype plugin on

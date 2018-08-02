@@ -10,10 +10,10 @@
 set nocompatible
 " configure Vundle
 filetype off " required! turn off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Bundle 'VundleVim/Vundle.vim'
 
 """""""""""""""""""""""""""""
 " => Ctrl P
@@ -169,12 +169,9 @@ let g:closetag_html_style=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => RainBow Parenthesses
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'luochen1990/rainbow'
 
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+let g:rainbow_active = 1
 
 Bundle 'airblade/vim-gitgutter'
 Bundle 'rizzatti/dash.vim'
@@ -195,3 +192,12 @@ nmap \ <Plug>CtrlSFCwordPath<CR>
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'tmux-plugins/vim-tmux'
 Bundle 'slim-template/vim-slim.git'
+Bundle 'isRuslan/vim-es6'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => END
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ensure ftdetect et al work by including this after the Vundle stuff
+call vundle#end()            " required
+filetype plugin indent on

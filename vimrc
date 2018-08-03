@@ -2,7 +2,7 @@
 " Initial Plugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
-
+set shell=/bin/bash
 " install Vundle bundles
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
@@ -122,9 +122,11 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 
-colorscheme Tomorrow-Night
-" set t_Co=256
 set background=dark
+" colorscheme Tomorrow-Night
+colorscheme hybrid
+" colorscheme afterglow
+set t_Co=256
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fonts
@@ -346,6 +348,12 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>s? z=
 
+""""""""""""""""""""""""""""""
+" => codeclimate
+""""""""""""""""""""""""""""""
+nmap <Leader>aa :CodeClimateAnalyzeProject<CR>
+nmap <Leader>ao :CodeClimateAnalyzeOpenFiles<CR>
+nmap <Leader>af :CodeClimateAnalyzeCurrentFile<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
